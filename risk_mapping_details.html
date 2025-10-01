@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Climate–Health Platform (ICHP)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for professional, institutional look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb; /* Light background for institutional feel */
+        }
+        .header-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+        }
+        .text-primary-color {
+            color: #0b5091; /* Dark blue for institutional feel */
+        }
+        .bg-primary-color {
+            background-color: #0b5091;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation Bar -->
+    <header class="header-shadow bg-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+                <div class="flex justify-start lg:w-0 lg:flex-1">
+                    <a href="#" class="flex items-center space-x-2">
+                        <!-- Logo Placeholder - Using an icon and text -->
+                        <svg class="h-8 w-8 text-primary-color" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5 5 0 005.5 5.5h15a5 5 0 005.5-5.5l-3-9m-11 5l2 2 4-4m-12 4l12 12m-2-12l2 2 4-4" />
+                        </svg>
+                        <span class="text-xl font-extrabold text-primary-color tracking-tight">ICHP</span>
+                        <span class="hidden sm:inline text-sm text-gray-500 font-medium">Platform</span>
+                    </a>
+                </div>
+                <!-- Navigation Links (Hidden on small screens, shown as menu button) -->
+                <nav class="hidden md:flex space-x-10">
+                    <a href="#about" class="text-base font-medium text-gray-500 hover:text-primary-color transition duration-150 ease-in-out">About</a>
+                    <a href="#components" class="text-base font-medium text-gray-500 hover:text-primary-color transition duration-150 ease-in-out">Components</a>
+                    <a href="#data" class="text-base font-medium text-gray-500 hover:text-primary-color transition duration-150 ease-in-out">Data & Tools</a>
+                    <a href="#contact" class="text-base font-medium text-gray-500 hover:text-primary-color transition duration-150 ease-in-out">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section (Large, institutional focus) -->
+        <section id="hero" class="relative overflow-hidden"
+    style="background: linear-gradient(to bottom right, rgba(11,80,145,0.85), rgba(11,80,145,0.55)),
+           url('https://res.cloudinary.com/djexglfns/image/upload/v1759326101/IDN-Children.jpg_tzsvey.webp');
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;">
+    
+    <div class="relative max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
+                Integrated Climate–Health Platform (ICHP)
+            </h1>
+            <p class="mt-3 max-w-md mx-auto text-xl text-indigo-100 sm:text-2xl md:mt-5 md:max-w-3xl">
+                Protecting Children from Climate-Sensitive Health Risks.
+            </p>
+            <div class="mt-10 max-w-md mx-auto sm:flex sm:justify-center md:mt-12">
+                <div class="rounded-lg shadow">
+                    <a href="#components" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-color bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out">
+                        Explore Platform
+                    </a>
+                </div>
+                <div class="mt-3 rounded-lg shadow sm:mt-0 sm:ml-3">
+                    <a href="#data" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-transparent border-white hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out">
+                        Access Data
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <!-- NEW Section: Integrated Data Views (Embedded Iframes) -->
+    <section id="integrated-views" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-base text-primary-color font-semibold tracking-wide uppercase">Real-Time Data Feeds</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Monitoring Key Climate and Risk Indicators
+                </p>
+                <p class="mt-4 max-w-3xl text-xl text-gray-500 lg:mx-auto">
+                    View integrated, live data from major national and global systems critical for early hazard detection and health planning.
+                </p>
+            </div>
+            
+            <div class="mt-12 grid gap-12 lg:grid-cols-2">
+                <!-- Embedded Card 1: Weather Condition (Windy) -->
+                <div class="relative flex flex-col rounded-lg shadow-xl overflow-hidden bg-white">
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                            1. Current Weather Conditions & Forecast
+                        </h3>
+                        <p class="text-base text-gray-500 mb-4">
+                            Real-time atmospheric data, including temperature, wind, and precipitation, essential for modeling climate-sensitive disease vectors.
+                        </p>
+                    </div>
+                    <div class="h-96 md:h-[500px] w-full border-t border-gray-200">
+                        <!-- Windy.com Iframe -->
+                        <iframe 
+                            class="w-full h-full" 
+                            src="https://www.windy.com/-Weather-radar-radar?radar,-2.496,117.896,5" 
+                            frameborder="0"
+                            loading="lazy"
+                            title="Embedded Weather Radar from Windy.com">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Embedded Card 2: Disaster Risk (InaRISK) -->
+                <div class="relative flex flex-col rounded-lg shadow-xl overflow-hidden bg-white">
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                            2. National Disaster Risk Index (InaRISK)
+                        </h3>
+                        <p class="text-base text-gray-500 mb-4">
+                            Official disaster risk assessments and hazard mapping from BNPB (InaRISK), crucial for infrastructure and emergency planning.
+                        </p>
+                    </div>
+                    <div class="h-96 md:h-[500px] w-full border-t border-gray-200">
+                        <!-- InaRISK Iframe -->
+                        <iframe 
+                            class="w-full h-full" 
+                            src="https://inarisk.bnpb.go.id/" 
+                            frameborder="0"
+                            loading="lazy"
+                            title="Embedded National Disaster Risk Map from InaRISK BNPB">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End NEW Section: Integrated Data Views -->
+       
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-300 hover:text-white">Partners</a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-300 hover:text-white">Publications</a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-300 hover:text-white">Privacy Policy</a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-300 hover:text-white">Contact Us</a>
+                </div>
+            </nav>
+            <p class="mt-8 text-center text-base text-gray-400">
+                &copy; 2025 Integrated Climate–Health Platform (ICHP). Developed by Center for Public Health Innovation (CPHI) of Udayana University.
+            </p>
+            <p class="mt-2 text-center text-sm text-gray-500">
+                Data presented is for institutional planning and research purposes only.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
