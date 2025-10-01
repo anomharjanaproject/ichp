@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Climate–Health Platform (ICHP)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for professional, institutional look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb; /* Light background for institutional feel */
+        }
+        .header-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+        }
+        .text-primary-color {
+            color: #0b5091; /* Dark blue for institutional feel */
+        }
+        .bg-primary-color {
+            background-color: #0b5091;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation Bar -->
+    <header class="header-shadow bg-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+                <div class="flex justify-start lg:w-0 lg:flex-1">
+                    <a href="#" class="flex items-center space-x-2">
+                        <!-- Logo Placeholder - Using an icon and text -->
+                        <svg class="h-8 w-8 text-primary-color" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5 5 0 005.5 5.5h15a5 5 0 005.5-5.5l-3-9m-11 5l2 2 4-4m-12 4l12 12m-2-12l2 2 4-4" />
+                        </svg>
+                        <span class="text-xl font-extrabold text-primary-color tracking-tight">ICHP</span>
+                        <span class="hidden sm:inline text-sm text-gray-500 font-medium">Platform</span>
+                    </a>
+                </div>
+                <!-- Navigation Links (Hidden on small screens, shown as menu button) -->
+                <nav class="hidden md:flex space-x-10">
+                    <a href="#about" class="text-base font-medium text-gray-500 hover:text-primary-color transition duration-150 ease-in-out">About</a>
+                    <a href="#components" class="text-base font-medium text-gray-500 hover:text-primary-color transition duration-150 ease-in-out">Components</a>
+                    <a href="#data" class="text-base font-medium text-gray-500 hover:text-primary-color transition duration-150 ease-in-out">Data & Tools</a>
+                    <a href="#contact" class="text-base font-medium text-gray-500 hover:text-primary-color transition duration-150 ease-in-out">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section (Large, institutional focus) -->
+        <section id="hero" class="relative bg-primary-color overflow-hidden">
+            <!-- Background Visual Mimicking Institutional Sites -->
+            <div class="absolute inset-0">
+                <img class="h-full w-full object-cover opacity-10" src="https://placehold.co/1200x600/0b5091/ffffff?text=Background+Pattern" alt="Abstract institutional background">
+            </div>
+
+            <div class="relative max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
+                        Integrated Climate–Health Platform (ICHP)
+                    </h1>
+                    <p class="mt-3 max-w-md mx-auto text-xl text-indigo-100 sm:text-2xl md:mt-5 md:max-w-3xl">
+                        Protecting Children from Climate-Sensitive Health Risks.
+                    </p>
+                    <div class="mt-10 max-w-md mx-auto sm:flex sm:justify-center md:mt-12">
+                        <div class="rounded-lg shadow">
+                            <a href="#components" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-color bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out">
+                                Explore Platform
+                            </a>
+                        </div>
+                        <div class="mt-3 rounded-lg shadow sm:mt-0 sm:ml-3">
+                            <a href="#data" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-transparent border-white hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out">
+                                Access Data
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-primary-color font-semibold tracking-wide uppercase">Our Mandate</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        A Unified Approach to Climate and Child Health
+                    </p>
+                    <p class="mt-4 max-w-3xl text-xl text-gray-500 lg:mx-auto">
+                        The ICHP provides an essential data-driven framework for national and sub-national authorities to anticipate, monitor, and respond to health threats amplified by climate change, specifically targeting the vulnerability of children.
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+                        <!-- Feature 1: Data Integration -->
+                        <div class="relative">
+                            <dt>
+                                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-color text-white shadow-lg">
+                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10l-2 1h20l-2-1V7M4 7h16M4 7L2 5m20 2l-2-2m-2 15h-8M12 21v-7"></path></svg>
+                                </div>
+                                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Multi-Sectoral Data Fusion</p>
+                            </dt>
+                            <dd class="mt-2 ml-16 text-base text-gray-500">
+                                Integrating climate projections, environmental data (air quality, hydrology), and localized pediatric health records.
+                            </dd>
+                        </div>
+                        <!-- Feature 2: Predictive Modeling -->
+                        <div class="relative">
+                            <dt>
+                                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-color text-white shadow-lg">
+                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </div>
+                                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Early Warning Systems</p>
+                            </dt>
+                            <dd class="mt-2 ml-16 text-base text-gray-500">
+                                Real-time risk modeling for climate-sensitive diseases like Dengue, Malaria, and heat stress in vulnerable child populations.
+                            </dd>
+                        </div>
+                        <!-- Feature 3: Policy Translation -->
+                        <div class="relative">
+                            <dt>
+                                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-color text-white shadow-lg">
+                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                </div>
+                                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Actionable Insights</p>
+                            </dt>
+                            <dd class="mt-2 ml-16 text-base text-gray-500">
+                                Converting complex risk data into clear recommendations for targeted public health interventions and climate adaptation policy.
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Components Section (Data/Map Focus) -->
+        <section id="components" class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-base text-primary-color font-semibold tracking-wide uppercase">Core Features</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        The ICHP Components
+                    </p>
+                </div>
+                
+                <div class="mt-12 grid gap-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
+                    <!-- Component Card 1: Risk Map -->
+                    <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-white hover:shadow-xl transition duration-300">
+                        <div class="flex-shrink-0">
+                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/D0E7FF/0b5091?text=Risk+Map+Visualization" alt="Geographic map showing risk zones">
+                        </div>
+                        <div class="flex-1 p-6 flex flex-col justify-between">
+                            <div class="flex-1">
+                                <p class="text-xl font-semibold text-gray-900">
+                                    Climate-Health Risk Mapping
+                                </p>
+                                <p class="mt-3 text-base text-gray-500">
+                                    Interactive geospatial visualization of climate hazards and child health outcomes, down to the sub-district level.
+                                </p>
+                            </div>
+                            <!-- Component Button Added -->
+                            <div class="mt-6">
+                                <a href="./risk_mapping_details.html" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-color hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-color transition duration-150 ease-in-out">
+                                    View Details
+                                </a>
+                            </div>
+                            <!-- End Component Button -->
+                        </div>
+                    </div>
+
+                    <!-- Component Card 2: Data Dashboard -->
+                    <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-white hover:shadow-xl transition duration-300">
+                        <div class="flex-shrink-0">
+                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/B5CCEE/0b5091?text=Data+Dashboard+Screenshot" alt="Charts and graphs showing health and climate data">
+                        </div>
+                        <div class="flex-1 p-6 flex flex-col justify-between">
+                            <div class="flex-1">
+                                <p class="text-xl font-semibold text-gray-900">
+                                    Integrated Monitoring Dashboard
+                                </p>
+                                <p class="mt-3 text-base text-gray-500">
+                                    Access real-time indicators, including air quality indices, temperature anomalies, and disease incidence rates.
+                                </p>
+                            </div>
+                            <!-- Component Button Added -->
+                            <div class="mt-6">
+                                <a href="./monitoring_details.html" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-color hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-color transition duration-150 ease-in-out">
+                                    View Details
+                                </a>
+                            </div>
+                            <!-- End Component Button -->
+                        </div>
+                    </div>
+
+                    <!-- Component Card 3: Policy Tools -->
+                    <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-white hover:shadow-xl transition duration-300">
+                        <div class="flex-shrink-0">
+                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/9AAEDD/0b5091?text=Policy+Recommendation+Interface" alt="User interface for policy analysis">
+                        </div>
+                        <div class="flex-1 p-6 flex flex-col justify-between">
+                            <div class="flex-1">
+                                <p class="text-xl font-semibold text-gray-900">
+                                    Intervention Planning & Simulation
+                                </p>
+                                <p class="mt-3 text-base text-gray-500">
+                                    Tools to simulate the impact of various public health and climate adaptation strategies on child health outcomes.
+                                </p>
+                            </div>
+                            <!-- Component Button Added -->
+                            <div class="mt-6">
+                                <a href="./policy_details.html" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-color hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-color transition duration-150 ease-in-out">
+                                    View Details
+                                </a>
+                            </div>
+                            <!-- End Component Button -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics/Impact Section -->
+        <section id="data" class="bg-white pt-16 pb-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-primary-color font-semibold tracking-wide uppercase">Impact at a Glance</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Driving Evidence-Based Action
+                    </p>
+                </div>
+                <div class="mt-10">
+                    <dl class="grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="flex flex-col text-center">
+                            <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
+                                Data Sources Integrated
+                            </dt>
+                            <dd class="order-1 text-5xl font-extrabold text-primary-color">
+                                12+
+                            </dd>
+                        </div>
+                        <div class="flex flex-col text-center">
+                            <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
+                                Provinces Mapped
+                            </dt>
+                            <dd class="order-1 text-5xl font-extrabold text-primary-color">
+                                34
+                            </dd>
+                        </div>
+                        <div class="flex flex-col text-center">
+                            <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
+                                Children Protected (Target)
+                            </dt>
+                            <dd class="order-1 text-5xl font-extrabold text-primary-color">
+                                5M
+                            </dd>
+                        </div>
+                        <div class="flex flex-col text-center">
+                            <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
+                                Real-Time Alerts Issued
+                            </dt>
+                            <dd class="order-1 text-5xl font-extrabold text-primary-color">
+                                200+
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action / Partner Section -->
+        <section class="bg-primary-color">
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+                <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                    <span class="block">Ready to utilize the data?</span>
+                    <span class="block text-indigo-200">Request access for your institution today.</span>
+                </h2>
+                <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                    <div class="inline-flex rounded-md shadow">
+                        <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary-color bg-white hover:bg-indigo-50 transition duration-150 ease-in-out">
+                            Request Access
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-300 hover:text-white">Partners</a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-300 hover:text-white">Publications</a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-300 hover:text-white">Privacy Policy</a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="#" class="text-base text-gray-300 hover:text-white">Contact Us</a>
+                </div>
+            </nav>
+            <p class="mt-8 text-center text-base text-gray-400">
+                &copy; 2025 Integrated Climate–Health Platform (ICHP). Developed in partnership with National Planning Agency and Global Health Initiative.
+            </p>
+            <p class="mt-2 text-center text-sm text-gray-500">
+                Data presented is for institutional planning and research purposes only.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
