@@ -85,7 +85,7 @@
 </section>
 
 
-        <!-- NEW Section: Integrated Data Views (Embedded Iframes) -->
+       <!-- NEW Section: Integrated Data Views (Embedded Iframes) -->
     <section id="integrated-views" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -99,7 +99,7 @@
             </div>
             
             <div class="mt-12 grid gap-12 lg:grid-cols-2">
-                <!-- Embedded Card 1: Weather Condition (Windy) -->
+                <!-- Embedded Card 1: Weather Condition (Windy) - REVISED to use external link -->
                 <div class="relative flex flex-col rounded-lg shadow-xl overflow-hidden bg-white">
                     <div class="flex-1 p-6 flex flex-col justify-between">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">
@@ -109,19 +109,26 @@
                             Real-time atmospheric data, including temperature, wind, and precipitation, essential for modeling climate-sensitive disease vectors.
                         </p>
                     </div>
-                    <div class="h-96 md:h-[500px] w-full border-t border-gray-200">
-                        <!-- Windy.com Iframe -->
-                        <iframe 
-                            class="w-full h-full" 
-                            src="https://www.windy.com/-Weather-radar-radar?radar,-2.496,117.896,5" 
-                            frameborder="0"
-                            loading="lazy"
-                            title="Embedded Weather Radar from Windy.com">
-                        </iframe>
+                    <div class="h-96 md:h-[500px] w-full border-t border-gray-200 relative">
+                        <!-- Replaced iframe with a clickable placeholder image linked to the external site -->
+                        <a href="https://www.windy.com/-Weather-radar-radar?radar,-2.496,117.896,5" target="_blank" class="block h-full w-full">
+                            <img 
+                                src="https://placehold.co/800x500/0b5091/FFFFFF?text=Click+to+View+Live+Weather+Map" 
+                                alt="Live Weather Map Preview" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <!-- Overlay/Button on the preview -->
+                            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center transition duration-300 hover:bg-opacity-10">
+                                <span class="text-white text-xl font-bold p-3 rounded-lg border-2 border-white hover:scale-105 transition">
+                                    Open Live Windy Map &rarr;
+                                </span>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Embedded Card 2: Disaster Risk (InaRISK) -->
+                <!-- Embedded Card 2: Disaster Risk (InaRISK) - REVISED to use external link -->
                 <div class="relative flex flex-col rounded-lg shadow-xl overflow-hidden bg-white">
                     <div class="flex-1 p-6 flex flex-col justify-between">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">
@@ -131,15 +138,22 @@
                             Official disaster risk assessments and hazard mapping from BNPB (InaRISK), crucial for infrastructure and emergency planning.
                         </p>
                     </div>
-                    <div class="h-96 md:h-[500px] w-full border-t border-gray-200">
-                        <!-- InaRISK Iframe -->
-                        <iframe 
-                            class="w-full h-full" 
-                            src="https://inarisk.bnpb.go.id/" 
-                            frameborder="0"
-                            loading="lazy"
-                            title="Embedded National Disaster Risk Map from InaRISK BNPB">
-                        </iframe>
+                    <div class="h-96 md:h-[500px] w-full border-t border-gray-200 relative">
+                        <!-- Replaced iframe with a clickable placeholder image linked to the external site -->
+                        <a href="https://inarisk.bnpb.go.id/" target="_blank" class="block h-full w-full">
+                            <img 
+                                src="https://placehold.co/800x500/007A3E/FFFFFF?text=Click+to+View+National+Disaster+Risk" 
+                                alt="National Disaster Risk Map Preview" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <!-- Overlay/Button on the preview -->
+                            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center transition duration-300 hover:bg-opacity-10">
+                                <span class="text-white text-xl font-bold p-3 rounded-lg border-2 border-white hover:scale-105 transition">
+                                    Open Live InaRISK Map &rarr;
+                                </span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
