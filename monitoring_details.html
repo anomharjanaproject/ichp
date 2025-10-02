@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrated Climate–Health Platform (ICHP)</title>
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+    .header-shadow { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05),0 2px 4px -2px rgba(0,0,0,0.03); }
+    .text-primary-color { color:#0b5091; }
+    .bg-primary-color { background-color:#0b5091; }
+    .fade-in { animation: fadeIn 0.6s ease-in-out; }
+    @keyframes fadeIn { from { opacity:0; transform:scale(0.98); } to { opacity:1; transform:scale(1); } }
+    .menu-btn {
+      display:flex; align-items:center; gap:10px;
+      width:100%; text-align:left;
+      padding:10px 12px; border-radius:0.5rem;
+      font-size:0.9rem; font-weight:500;
+      color:#374151; transition:all 0.3s ease;
+    }
+    .menu-btn:hover { background-color:#e6f0fa; color:#0b5091; }
+    .menu-icon { width:20px; height:20px; flex-shrink:0; color:#0b5091; }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="header-shadow bg-white sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex justify-start lg:w-0 lg:flex-1">
+          <a href="index.html" class="flex items-center space-x-2">
+            <svg class="h-8 w-8 text-primary-color" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 9h1a2 2 0 012 2v1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="text-xl font-extrabold text-primary-color tracking-tight">ICHP</span>
+          </a>
+        </div>
+        <nav class="hidden md:flex space-x-10">
+          <a href="index.html" class="text-base font-medium text-gray-500 hover:text-primary-color">About</a>
+          <a href="index.html" class="text-base font-medium text-gray-500 hover:text-primary-color">Components</a>
+          <a href="index.html" class="text-base font-medium text-gray-500 hover:text-primary-color">Data & Tools</a>
+          <a href="index.html" class="text-base font-medium text-gray-500 hover:text-primary-color">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <main class="flex flex-1">
+    
+    <!-- Sidebar -->
+    <aside class="w-72 bg-white border-r border-gray-200 shadow-md">
+      <div class="p-6">
+        <h2 class="text-lg font-bold text-primary-color mb-4">Child Health Indicators</h2>
+        <ul class="space-y-2">
+          <li><button onclick="loadDashboard('NMR')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8c1.657 0 3-1.343 3-3S13.657 2 12 2 9 3.343 9 5s1.343 3 3 3z"/><path d="M12 14v8m-7-4h14"/></svg>Neonatal Mortality Rate (NMR)</button></li>
+          <li><button onclick="loadDashboard('IMR')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Infant Mortality Rate (IMR)</button></li>
+          <li><button onclick="loadDashboard('U5MR')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Under-5 Mortality Rate (U5MR)</button></li>
+          <li><button onclick="loadDashboard('Stunting')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 20h16M4 10h16M4 4h16"/></svg>Stunting</button></li>
+          <li><button onclick="loadDashboard('Wasting')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>Wasting</button></li>
+          <li><button onclick="loadDashboard('Overweight')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>Overweight</button></li>
+          <li><button onclick="loadDashboard('EBF')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 22c4.418 0 8-3.582 8-8 0-2.5-1.5-6-8-14-6.5 8-8 11.5-8 14 0 4.418 3.582 8 8 8z"/></svg>Exclusive Breastfeeding (0–6 mo)</button></li>
+          <li><button onclick="loadDashboard('Anemia')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 21V9m0 0l3.5 7h-7L12 9z"/></svg>Anemia (6–59 mo)</button></li>
+          <li><button onclick="loadDashboard('Immunization')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 7h10M7 11h10M7 15h10"/></svg>Immunization Coverage</button></li>
+          <li><button onclick="loadDashboard('Pneumonia')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 15a4 4 0 018 0m-8 0a4 4 0 108 0m-8 0v6h8v-6"/></svg>Care-seeking for Pneumonia</button></li>
+          <li><button onclick="loadDashboard('ORT')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M12 4h9"/><path d="M4 9h16M4 15h16"/></svg>Use of ORT for Diarrhea</button></li>
+          <li><button onclick="loadDashboard('SBA')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Skilled Birth Attendance (SBA)</button></li>
+          <li><button onclick="loadDashboard('Water')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4.5 8-10a8 8 0 10-16 0c0 5.5 8 10 8 10z"/></svg>Improved Drinking Water</button></li>
+          <li><button onclick="loadDashboard('Sanitation')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 21v-4a2 2 0 012-2h12a2 2 0 012 2v4"/></svg>Improved Sanitation</button></li>
+          <li><button onclick="loadDashboard('AirPollution')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 15h18M3 19h18M3 11h18M3 7h18"/></svg>Household Air Pollution (clean fuels)</button></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Panel -->
+    <section class="flex-1 bg-gray-100 p-6">
+      <div class="bg-white shadow-xl rounded-2xl border border-gray-200 h-full flex flex-col">
+        <div class="p-4 border-b bg-gray-50">
+          <h3 id="dashboardTitle" class="text-xl font-bold text-gray-800">Dashboard: Neonatal Mortality Rate (NMR)</h3>
+        </div>
+        <div class="flex-1 relative">
+          <iframe id="dashboardFrame" src="https://lookerstudio.google.com/embed/reporting/sample_default_dashboard" class="w-full h-full fade-in rounded-b-2xl" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-gray-800">
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-base text-gray-400">&copy; 2025 Integrated Climate–Health Platform (ICHP). Developed by CPHI, Udayana University.</p>
+      <p class="mt-1 text-sm text-gray-500">Data presented is for institutional planning and research purposes only.</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    const menuButtons = document.querySelectorAll('.menu-btn');
+    const frame = document.getElementById('dashboardFrame');
+    const title = document.getElementById('dashboardTitle');
+
+    function loadDashboard(indicator) {
+      menuButtons.forEach(btn => btn.classList.remove('bg-primary-color','text-white','shadow'));
+      event.currentTarget.classList.add('bg-primary-color','text-white','shadow','transition','duration-300');
+
+      let text = event.currentTarget.innerText.trim();
+      title.textContent = "Dashboard: " + text;
+
+      frame.classList.remove('fade-in'); 
+      void frame.offsetWidth; 
+      frame.classList.add('fade-in');
+      frame.src = "https://lookerstudio.google.com/embed/reporting/sample_default_dashboard";
+    }
+  </script>
+</body>
+</html>
