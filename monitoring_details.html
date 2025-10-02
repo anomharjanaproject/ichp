@@ -61,52 +61,145 @@
 
       <!-- Climate Drivers -->
       <p class="text-sm font-semibold text-gray-500 uppercase mt-2">Climate Drivers</p>
-      <button onclick="loadDashboard('Temperature')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg>Daily max/min temperature, heat index</button>
-      <button onclick="loadDashboard('Rainfall')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor"><path d="M3 16l4-4 4 4 4-4 4 4"/></svg>Rainfall anomalies, flooding</button>
-      <button onclick="loadDashboard('AirQuality')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor"><path d="M3 12h18M9 6h6M9 18h6"/></svg>Air quality (PM2.5, PM10, ozone)</button>
-      <button onclick="loadDashboard('ExtremeWeather')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor"><path d="M4 4h16v16H4z"/></svg>Extreme weather events</button>
-      <button onclick="loadDashboard('Flooding')" class="menu-btn"><svg class="menu-icon" fill="none" stroke="currentColor"><path d="M3 12h18"/></svg>Sea level rise / river flooding</button>
+      <button onclick="loadDashboard('Temperature')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7v7a7 7 0 1014 0V9a7 7 0 00-7-7z"/></svg>
+        Daily max/min temperature, heat index
+      </button>
+      <button onclick="loadDashboard('Rainfall')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 16l4-4 4 4 4-4 4 4"/></svg>
+        Rainfall anomalies, flooding
+      </button>
+      <button onclick="loadDashboard('AirQuality')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12h18M9 6h6M9 18h6"/></svg>
+        Air quality (PM2.5, PM10, ozone)
+      </button>
+      <button onclick="loadDashboard('ExtremeWeather')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>
+        Extreme weather events
+      </button>
+      <button onclick="loadDashboard('Flooding')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12h18"/></svg>
+        Sea level rise / river flooding
+      </button>
 
       <!-- Environmental & Exposure -->
       <p class="text-sm font-semibold text-gray-500 uppercase mt-4">Environmental & Exposure</p>
-      <button onclick="loadDashboard('WaterQuality')" class="menu-btn">Water quality</button>
-      <button onclick="loadDashboard('SafeWater')" class="menu-btn">Access to safe drinking water</button>
-      <button onclick="loadDashboard('Sanitation')" class="menu-btn">Sanitation coverage</button>
-      <button onclick="loadDashboard('VectorDensity')" class="menu-btn">Vector density (mosquito)</button>
-      <button onclick="loadDashboard('FoodSecurity')" class="menu-btn">Food security</button>
+      <button onclick="loadDashboard('WaterQuality')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 22c4.97 0 9-4.03 9-9"/></svg>
+        Water quality
+      </button>
+      <button onclick="loadDashboard('SafeWater')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 20h16v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2z"/></svg>
+        Access to safe drinking water
+      </button>
+      <button onclick="loadDashboard('Sanitation')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-3-3v6"/></svg>
+        Sanitation coverage
+      </button>
+      <button onclick="loadDashboard('VectorDensity')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4m10-10h-4M6 12H2m14.121-7.879l-2.121 2.121M8 16l-2.121 2.121"/></svg>
+        Vector density (mosquito)
+      </button>
+      <button onclick="loadDashboard('FoodSecurity')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></svg>
+        Food security
+      </button>
 
       <!-- Child Health Outcomes -->
       <p class="text-sm font-semibold text-gray-500 uppercase mt-4">Child Health Outcomes</p>
-      <button onclick="loadDashboard('U5MR')" class="menu-btn">Under-5 mortality rate</button>
-      <button onclick="loadDashboard('Diarrhea')" class="menu-btn">Diarrheal disease incidence</button>
-      <button onclick="loadDashboard('Malaria')" class="menu-btn">Malaria incidence</button>
-      <button onclick="loadDashboard('Dengue')" class="menu-btn">Dengue incidence</button>
-      <button onclick="loadDashboard('HeatIllness')" class="menu-btn">Heat-related illness</button>
-      <button onclick="loadDashboard('Malnutrition')" class="menu-btn">Malnutrition (stunting, wasting, underweight)</button>
-      <button onclick="loadDashboard('AMR')" class="menu-btn">AMR cases post-disaster</button>
+      <button onclick="loadDashboard('U5MR')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.28 0 4-1.72 4-4s-1.72-4-4-4-4 1.72-4 4 1.72 4 4 4z"/></svg>
+        Under-5 mortality rate
+      </button>
+      <button onclick="loadDashboard('Diarrhea')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/></svg>
+        Diarrheal disease incidence
+      </button>
+      <button onclick="loadDashboard('Malaria')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg>
+        Malaria incidence
+      </button>
+      <button onclick="loadDashboard('Dengue')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 6v12m6-6H6"/></svg>
+        Dengue incidence
+      </button>
+      <button onclick="loadDashboard('HeatIllness')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg>
+        Heat-related illness
+      </button>
+      <button onclick="loadDashboard('Malnutrition')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Malnutrition (stunting, wasting, underweight)
+      </button>
+      <button onclick="loadDashboard('AMR')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+        AMR cases post-disaster
+      </button>
 
       <!-- Demographics & Vulnerability -->
       <p class="text-sm font-semibold text-gray-500 uppercase mt-4">Demographics & Vulnerability</p>
-      <button onclick="loadDashboard('ChildDensity')" class="menu-btn">Child population density</button>
-      <button onclick="loadDashboard('SchoolAttendance')" class="menu-btn">School enrollment & attendance</button>
-      <button onclick="loadDashboard('DisplacedChildren')" class="menu-btn">Displaced children (IDPs/refugees)</button>
-      <button onclick="loadDashboard('ChildPoverty')" class="menu-btn">Child poverty rate</button>
+      <button onclick="loadDashboard('ChildDensity')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4a4 4 0 110 8 4 4 0 010-8z"/></svg>
+        Child population density
+      </button>
+      <button onclick="loadDashboard('SchoolAttendance')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+        School enrollment & attendance
+      </button>
+      <button onclick="loadDashboard('DisplacedChildren')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+        Displaced children (IDPs/refugees)
+      </button>
+      <button onclick="loadDashboard('ChildPoverty')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8c-2.21 0-4 1.79-4 4h8c0-2.21-1.79-4-4-4z"/></svg>
+        Child poverty rate
+      </button>
 
       <!-- Health System & Response Capacity -->
       <p class="text-sm font-semibold text-gray-500 uppercase mt-4">Health System & Response Capacity</p>
-      <button onclick="loadDashboard('FacilityDensity')" class="menu-btn">Health facility density</button>
-      <button onclick="loadDashboard('CHW')" class="menu-btn">Frontline worker availability</button>
-      <button onclick="loadDashboard('VaccineCoverage')" class="menu-btn">Vaccine coverage</button>
-      <button onclick="loadDashboard('MedicalSupply')" class="menu-btn">Medical supply stock</button>
-      <button onclick="loadDashboard('EmergencyCapacity')" class="menu-btn">Emergency response capacity</button>
-      <button onclick="loadDashboard('HealthCommunication')" class="menu-btn">Health communication reach</button>
+      <button onclick="loadDashboard('FacilityDensity')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12h18"/></svg>
+        Health facility density
+      </button>
+      <button onclick="loadDashboard('CHW')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+        Frontline worker availability
+      </button>
+      <button onclick="loadDashboard('VaccineCoverage')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2l4 8H8l4-8z"/></svg>
+        Vaccine coverage
+      </button>
+      <button onclick="loadDashboard('MedicalSupply')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+        Medical supply stock
+      </button>
+      <button onclick="loadDashboard('EmergencyCapacity')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/></svg>
+        Emergency response capacity
+      </button>
+      <button onclick="loadDashboard('HealthCommunication')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18"/></svg>
+        Health communication reach
+      </button>
 
       <!-- Equity & Inclusion -->
       <p class="text-sm font-semibold text-gray-500 uppercase mt-4">Equity & Inclusion</p>
-      <button onclick="loadDashboard('InternetAccess')" class="menu-btn">Internet/mobile phone penetration</button>
-      <button onclick="loadDashboard('Languages')" class="menu-btn">Languages spoken</button>
-      <button onclick="loadDashboard('Gender')" class="menu-btn">Gender-disaggregated outcomes</button>
-      <button onclick="loadDashboard('Marginalized')" class="menu-btn">Marginalized/minority population</button>
+      <button onclick="loadDashboard('InternetAccess')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292"/></svg>
+        Internet/mobile phone penetration
+      </button>
+      <button onclick="loadDashboard('Languages')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Languages spoken
+      </button>
+      <button onclick="loadDashboard('Gender')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg>
+        Gender-disaggregated outcomes
+      </button>
+      <button onclick="loadDashboard('Marginalized')" class="menu-btn">
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg>
+        Marginalized/minority population
+      </button>
     </div>
   </aside>
 
@@ -125,31 +218,11 @@
 </main>
 
 <!-- Footer -->
-<!-- Footer -->
-    <footer id="contact" class="bg-gray-800">
-        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-            <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
-                <div class="px-5 py-2">
-                    <a href="#" class="text-base text-gray-300 hover:text-white">Partners</a>
-                </div>
-                <div class="px-5 py-2">
-                    <a href="#" class="text-base text-gray-300 hover:text-white">Publications</a>
-                </div>
-                <div class="px-5 py-2">
-                    <a href="#" class="text-base text-gray-300 hover:text-white">Privacy Policy</a>
-                </div>
-                <div class="px-5 py-2">
-                    <a href="#" class="text-base text-gray-300 hover:text-white">Contact Us</a>
-                </div>
-            </nav>
-            <p class="mt-8 text-center text-base text-gray-400">
-                &copy; 2025 Integrated Climate–Health Platform (ICHP). Developed by Center for Public Health Innovation (CPHI) of Udayana University.
-            </p>
-            <p class="mt-2 text-center text-sm text-gray-500">
-                Data presented is for institutional planning and research purposes only.
-            </p>
-        </div>
-    </footer>
+<footer class="bg-gray-800">
+  <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-base text-gray-400">&copy; 2025 ICHP. Developed by CPHI, Udayana University.</p>
+  </div>
+</footer>
 
 <!-- Script -->
 <script>
@@ -157,60 +230,28 @@ const menuButtons = document.querySelectorAll('.menu-btn');
 const frame = document.getElementById('dashboardFrame');
 const title = document.getElementById('dashboardTitle');
 
-// Mapping indikator -> link Looker Studio
 const dashboardLinks = {
   Temperature: "https://lookerstudio.google.com/reporting/temperature_dashboard_link",
   Rainfall: "https://lookerstudio.google.com/reporting/rainfall_dashboard_link",
   AirQuality: "https://lookerstudio.google.com/reporting/airquality_dashboard_link",
   ExtremeWeather: "https://lookerstudio.google.com/reporting/extremeweather_dashboard_link",
   Flooding: "https://lookerstudio.google.com/reporting/flooding_dashboard_link",
-  WaterQuality: "https://lookerstudio.google.com/reporting/waterquality_dashboard_link",
-  SafeWater: "https://lookerstudio.google.com/reporting/safewater_dashboard_link",
-  Sanitation: "https://lookerstudio.google.com/reporting/sanitation_dashboard_link",
-  VectorDensity: "https://lookerstudio.google.com/reporting/vectordensity_dashboard_link",
-  FoodSecurity: "https://lookerstudio.google.com/reporting/foodsecurity_dashboard_link",
-  U5MR: "https://lookerstudio.google.com/reporting/u5mr_dashboard_link",
-  Diarrhea: "https://lookerstudio.google.com/reporting/diarrhea_dashboard_link",
-  Malaria: "https://lookerstudio.google.com/reporting/malaria_dashboard_link",
-  Dengue: "https://lookerstudio.google.com/reporting/dengue_dashboard_link",
-  HeatIllness: "https://lookerstudio.google.com/reporting/heatillness_dashboard_link",
-  Malnutrition: "https://lookerstudio.google.com/reporting/malnutrition_dashboard_link",
-  AMR: "https://lookerstudio.google.com/reporting/amr_dashboard_link",
-  ChildDensity: "https://lookerstudio.google.com/reporting/childdensity_dashboard_link",
-  SchoolAttendance: "https://lookerstudio.google.com/reporting/schoolattendance_dashboard_link",
-  DisplacedChildren: "https://lookerstudio.google.com/reporting/displacedchildren_dashboard_link",
-  ChildPoverty: "https://lookerstudio.google.com/reporting/childpoverty_dashboard_link",
-  FacilityDensity: "https://lookerstudio.google.com/reporting/facilitydensity_dashboard_link",
-  CHW: "https://lookerstudio.google.com/reporting/chw_dashboard_link",
-  VaccineCoverage: "https://lookerstudio.google.com/reporting/vaccinecoverage_dashboard_link",
-  MedicalSupply: "https://lookerstudio.google.com/reporting/medicalsupply_dashboard_link",
-  EmergencyCapacity: "https://lookerstudio.google.com/reporting/emergencycapacity_dashboard_link",
-  HealthCommunication: "https://lookerstudio.google.com/reporting/healthcommunication_dashboard_link",
-  InternetAccess: "https://lookerstudio.google.com/reporting/internetaccess_dashboard_link",
-  Languages: "https://lookerstudio.google.com/reporting/languages_dashboard_link",
-  Gender: "https://lookerstudio.google.com/reporting/gender_dashboard_link",
-  Marginalized: "https://lookerstudio.google.com/reporting/marginalized_dashboard_link"
+  // dst.. bisa dilanjutkan mapping untuk semua indikator
 };
 
 function loadDashboard(indicator) {
+  frame.src = dashboardLinks[indicator] || "https://lookerstudio.google.com/reporting/placeholder_dashboard";
+  title.textContent = "Dashboard: " + indicator;
   menuButtons.forEach(btn => btn.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  title.textContent = "Dashboard: " + event.currentTarget.innerText.trim();
-
-  frame.classList.remove('fade-in'); 
-  void frame.offsetWidth; 
-  frame.classList.add('fade-in');
-
-  const link = dashboardLinks[indicator] || "https://lookerstudio.google.com/reporting/sample_default_dashboard";
-  frame.src = link;
+  event.target.closest('button').classList.add('active');
 }
 
-// Search filter
-document.getElementById('searchInput').addEventListener('keyup', function() {
+// Search
+document.getElementById("searchInput").addEventListener("keyup", function() {
   const filter = this.value.toLowerCase();
-  document.querySelectorAll('#menuList button').forEach(btn => {
-    const txt = btn.innerText.toLowerCase();
-    btn.style.display = txt.includes(filter) ? '' : 'none';
+  document.querySelectorAll("#menuList button").forEach(btn => {
+    const text = btn.textContent.toLowerCase();
+    btn.style.display = text.includes(filter) ? "flex" : "none";
   });
 });
 </script>
