@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ICHP — Vulnerability Self-Assessment Calculator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    .input-hint { font-size:0.8rem; color:#6b7280; }
+    .card { background: white; border-radius: 12px; box-shadow: 0 6px 18px rgba(15,23,42,0.06); }
+    .small { font-size:0.85rem; }
+    .danger { color:#dc2626 }
+  </style>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-6xl mx-auto">
+    <header class="mb-6">
+      <h1 class="text-2xl font-bold">ICHP — Vulnerability Self-Assessment Calculator</h1>
+      <p class="text-sm text-gray-600">Web prototype: fill in 29 indicator inputs + regional capacity → press <strong>Compute</strong> to view the score, zone, spider chart, map (upload GeoJSON), & recommendations.</p>
+    </header>
+
+    <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Left: form -->
+      <section class="col-span-2 card p-4">
+        <h2 class="font-semibold mb-2">A. Indicator Input (29) — fill all with numbers</h2>
+<p class="input-hint mb-3">Each entry contains the actual value in the area (e.g., number of cases per 1,000 children / prevalence % / number of staff / billion Rp, etc.). There are placeholders & units to assist.</p>
+
+        <form id="indicatorForm" class="space-y-4 overflow-auto max-h-[60vh] pr-2">
+          <!-- Climate Drivers (5) -->
+          <div class="border-l-4 border-blue-500 pl-3 mb-2">
+            <h3 class="font-medium">Climate Drivers</h3>
+            <p class="small text-gray-600">(Exposure — higher usually worse)</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-sm">Temperature (mean annual max °C)</label>
+              <input name="Temperature" type="number" step="0.1" placeholder="e.g. 33" class="w-full rounded border p-2" />
+              <div class="input-hint">Unit: °C (higher = worse)</div>
+            </div>
+            <div>
+              <label class="block text-sm">Rainfall (annual mm)</label>
+              <input name="Rainfall" type="number" step="1" placeholder="e.g. 2200" class="w-full rounded border p-2" />
+              <div class="input-hint">Unit: mm/year (extreme high or very low can be risky; treat higher = worse for simplicity)</div>
+            </div>
+            <div>
+              <label class="block text-sm">AirQuality (avg PM2.5 µg/m3)</label>
+              <input name="AirQuality" type="number" step="0.1" placeholder="e.g. 35" class="w-full rounded border p-2" />
+              <div class="input-hint">Unit: µg/m³ (higher = worse)</div>
+            </div>
+            <div>
+              <label class="block text-sm">ExtremeWeather (events/year)</label>
+              <input name="ExtremeWeather" type="number" step="1" placeholder="e.g. 2" class="w-full rounded border p-2" />
+              <div class="input-hint">Count per year (higher = worse)</div>
+            </div>
+            <div>
+              <label class="block text-sm">Flooding (days/year affected)</label>
+              <input name="Flooding" type="number" step="1" placeholder="e.g. 4" class="w-full rounded border p-2" />
+              <div class="input-hint">Days per year (higher = worse)</div>
+            </div>
+          </div>
+
+          <!-- Environmental & Exposure (5) -->
+          <div class="border-l-4 border-emerald-500 pl-3 mt-4 mb-2">
+            <h3 class="font-medium">Environmental & Exposure</h3>
+            <p class="small text-gray-600">(Mediators — water, sanitation, vector, food)</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-sm">WaterQuality (contamination index 0-100)</label>
+              <input name="WaterQuality" type="number" step="1" placeholder="e.g. 40" class="w-full rounded border p-2" />
+              <div class="input-hint">0 = clean, 100 = very contaminated (higher = worse)</div>
+            </div>
+            <div>
+              <label class="block text-sm">SafeWater (pct households with safe water %)</label>
+              <input name="SafeWater" type="number" step="0.1" placeholder="e.g. 78" class="w-full rounded border p-2" />
+              <div class="input-hint">Unit: % (higher = better)</div>
+            </div>
+            <div>
+              <label class="block text-sm">Sanitation (pct households with improved sanitation %)</label>
+              <input name="Sanitation" type="number" step="0.1" placeholder="e.g. 65" class="w-full rounded border p-2" />
+              <div class="input-hint">Unit: % (higher = better)</div>
+            </div>
+            <div>
+              <label class="block text-sm">VectorDensity (index 0-100)</label>
+              <input name="VectorDensity" type="number" step="1" placeholder="e.g. 30" class="w-full rounded border p-2" />
+              <div class="input-hint">Higher = more mosquitoes (worse)</div>
+            </div>
+            <div>
+              <label class="block text-sm">FoodSecurity (pct households food secure %)</label>
+              <input name="FoodSecurity" type="number" step="0.1" placeholder="e.g. 70" class="w-full rounded border p-2" />
+              <div class="input-hint">Unit: % (higher = better)</div>
+            </div>
+          </div>
+
+          <!-- Child Health Outcomes (7) -->
+          <div class="border-l-4 border-red-500 pl-3 mt-4 mb-2">
+            <h3 class="font-medium">Child Health Outcomes</h3>
+            <p class="small text-gray-600">(Outcomes — higher generally worse)</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-sm">U5MR (per 1,000 live births)</label>
+              <input name="U5MR" type="number" step="0.1" placeholder="e.g. 18" class="w-full rounded border p-2" />
+              <div class="input-hint">per 1,000 live births (higher = worse)</div>
+            </div>
+            <div>
+              <label class="block text-sm">Diarrhea (cases per 1,000 children/year)</label>
+              <input name="Diarrhea" type="number" step="0.1" placeholder="e.g. 120" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">Malaria (incidence per 1,000)</label>
+              <input name="Malaria" type="number" step="0.1" placeholder="e.g. 45" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">Dengue (incidence per 1,000)</label>
+              <input name="Dengue" type="number" step="0.1" placeholder="e.g. 30" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">HeatIllness (ER visits per 100,000 children/year)</label>
+              <input name="HeatIllness" type="number" step="0.1" placeholder="e.g. 5" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">Malnutrition (stunting prevalence %)</label>
+              <input name="Malnutrition" type="number" step="0.1" placeholder="e.g. 22" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">AMR (AMR cases per 1,000 post-disaster)</label>
+              <input name="AMR" type="number" step="0.1" placeholder="e.g. 0.5" class="w-full rounded border p-2" />
+            </div>
+          </div>
+
+          <!-- Demographics & Vulnerability (4) -->
+          <div class="border-l-4 border-yellow-500 pl-3 mt-4 mb-2">
+            <h3 class="font-medium">Demographics & Vulnerability</h3>
+            <p class="small text-gray-600">(background & vulnerability)</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-sm">ChildDensity (children per km²)</label>
+              <input name="ChildDensity" type="number" step="1" placeholder="e.g. 500" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">SchoolAttendance (pct children attending %)</label>
+              <input name=" SchoolAttendance" name="SchoolAttendance" type="number" step="0.1" placeholder="e.g. 88" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">DisplacedChildren (count / year)</label>
+              <input name="DisplacedChildren" type="number" step="1" placeholder="e.g. 200" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">ChildPoverty (pct children below poverty %)</label>
+              <input name="ChildPoverty" type="number" step="0.1" placeholder="e.g. 25" class="w-full rounded border p-2" />
+            </div>
+          </div>
+
+          <!-- Health System & Response Capacity (6) -->
+          <div class="border-l-4 border-indigo-500 pl-3 mt-4 mb-2">
+            <h3 class="font-medium">Health System & Response Capacity</h3>
+            <p class="small text-gray-600">(system capacity — higher = better)</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-sm">FacilityDensity (facilities per 10k pop)</label>
+              <input name="FacilityDensity" type="number" step="0.1" placeholder="e.g. 5" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">CHW (community health workers per 10k)</label>
+              <input name="CHW" type="number" step="0.1" placeholder="e.g. 12" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">VaccineCoverage (% complete)</label>
+              <input name="VaccineCoverage" type="number" step="0.1" placeholder="e.g. 92" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">MedicalSupply (stock reliability 0-100)</label>
+              <input name="MedicalSupply" type="number" step="0.1" placeholder="e.g. 85" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">EmergencyCapacity (index 0-100)</label>
+              <input name="EmergencyCapacity" type="number" step="0.1" placeholder="e.g. 60" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">HealthCommunication (reach %)</label>
+              <input name="HealthCommunication" type="number" step="0.1" placeholder="e.g. 55" class="w-full rounded border p-2" />
+            </div>
+          </div>
+
+          <!-- Equity & Inclusion (4) -->
+          <div class="border-l-4 border-pink-500 pl-3 mt-4 mb-2">
+            <h3 class="font-medium">Equity & Inclusion</h3>
+            <p class="small text-gray-600">(access & social factors)</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-sm">InternetAccess (pct households %)</label>
+              <input name="InternetAccess" type="number" step="0.1" placeholder="e.g. 65" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">Languages (language diversity index 0-100)</label>
+              <input name="Languages" type="number" step="0.1" placeholder="e.g. 20" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">Gender (gender parity index 0-100)</label>
+              <input name="Gender" type="number" step="0.1" placeholder="e.g. 90" class="w-full rounded border p-2" />
+            </div>
+            <div>
+              <label class="block text-sm">Marginalized (social exclusion index 0-100)</label>
+              <input name="Marginalized" type="number" step="0.1" placeholder="e.g. 30" class="w-full rounded border p-2" />
+            </div>
+          </div>
+
+          <!-- Capacity questions (self-assessment) -->
+          <div class="border-t pt-3 mt-4">
+  <h3 class="font-medium">Capacity - Local Government (self-assessment)</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
+    <div>
+      <label class="block text-sm">Health Workforce (total full-time equivalent health workers)</label>
+      <input name="HR_count" type="number" step="1" placeholder="e.g. 1200" class="w-full rounded border p-2" />
+      <div class="input-hint">Number of health workers (higher = better)</div>
+    </div>
+    <div>
+      <label class="block text-sm">Fiscal Capacity (billion Rp)</label>
+      <input name="Fiscal_mrd" type="number" step="0.1" placeholder="e.g. 35" class="w-full rounded border p-2" />
+      <div class="input-hint">In billion Rupiah (higher = better)</div>
+    </div>
+    <div>
+      <label class="block text-sm">Collaboration (public-private-community score 0-100)</label>
+      <input name="Collab_score" type="number" step="0.1" placeholder="e.g. 60" class="w-full rounded border p-2" />
+      <div class="input-hint">0 = no collaboration, 100 = strong collaboration</div>
+    </div>
+  </div>
+</div>
+
+
+        </form>
+
+        <div class="mt-4 flex items-center gap-3">
+          <select id="scoringMethod" class="rounded border p-2 small">
+            <option value="equal">Scoring: Equal weights (default)</option>
+            <option value="pca">Scoring: PCA-driven weights (requires internet to load numeric.js)</option>
+          </select>
+          <button id="computeBtn" class="bg-blue-600 text-white px-4 py-2 rounded">Compute Index</button>
+          <button id="resetBtn" class="border px-4 py-2 rounded">Reset</button>
+          <div id="status" class="text-sm text-gray-600 ml-4"></div>
+        </div>
+
+      </section>
+
+      <!-- Right: outputs -->
+      <aside class="card p-4">
+  <h2 class="font-semibold mb-2">Results & Visuals</h2>
+  <div class="space-y-3">
+    <div id="overallBox" class="p-3 rounded border">-- Press Compute --</div>
+
+    <div>
+      <canvas id="radarChart" height="300"></canvas>
+    </div>
+
+    <div class="mt-2">
+      <label class="block text-sm">Upload GeoJSON (optional) to color regions based on scores:</label>
+      <input id="geojsonUpload" type="file" accept=".geojson,.json" class="mt-2" />
+      <div id="map" style="height:240px; margin-top:8px;" class="border"></div>
+    </div>
+
+    <div class="mt-3">
+      <h3 class="font-medium">Summary Recommendations</h3>
+      <div id="recoBox" class="text-sm text-gray-700"></div>
+    </div>
+
+    <div class="mt-3">
+      <h3 class="font-medium">Investment Cost Analysis (select intervention)</h3>
+      <div class="space-y-2">
+        <select id="intervSelect" class="w-full rounded border p-2">
+          <option value="Sanitation">Improve Sanitation</option>
+          <option value="FacilityDensity">Increase Facility Density</option>
+          <option value="SafeWater">Enhance Safe Water Supply</option>
+          <option value="VectorControl">Vector Control Program</option>
+          <option value="MedicalSupply">Strengthen Medical Supply Chain</option>
+        </select>
+        <div class="grid grid-cols-2 gap-2">
+          <input id="intervCost" type="number" step="0.1" placeholder="Cost (billion Rp)" class="rounded border p-2" />
+          <input id="intervEfficacy" type="number" step="0.1" placeholder="Expected impact % (reduction)" class="rounded border p-2" />
+        </div>
+        <button id="calcInv" class="bg-green-600 text-white px-3 py-2 rounded mt-2">Calculate ROI</button>
+        <div id="invOutput" class="text-sm text-gray-700 mt-2"></div>
+      </div>
+    </div>
+
+  </div>
+</aside>
+</main>
+
+<footer class="mt-6 text-sm text-gray-600">
+  Prototype — for demo purposes. Statistical modeling (PCA) & data cleaning should be performed on the production server for security & audit purposes.
+</footer>
+</div>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- numeric.js for PCA option (optional) -->
+  <script>
+    // Core logic in vanilla JS
+    (function(){
+      // variable groups definition (for domain aggregation & directionality)
+      const domains = {
+        ClimateDrivers: ['Temperature','Rainfall','AirQuality','ExtremeWeather','Flooding'],
+        Environmental: ['WaterQuality','SafeWater','Sanitation','VectorDensity','FoodSecurity'],
+        ChildHealth: ['U5MR','Diarrhea','Malaria','Dengue','HeatIllness','Malnutrition','AMR'],
+        Demographics: ['ChildDensity','SchoolAttendance','DisplacedChildren','ChildPoverty'],
+        HealthSystem: ['FacilityDensity','CHW','VaccineCoverage','MedicalSupply','EmergencyCapacity','HealthCommunication'],
+        Equity: ['InternetAccess','Languages','Gender','Marginalized']
+      };
+
+      // direction: true => higher is worse (risk), false => higher is better (protective)
+      const direction = {
+        // Climate Drivers
+        Temperature:true, Rainfall:true, AirQuality:true, ExtremeWeather:true, Flooding:true,
+        // Environmental
+        WaterQuality:true, SafeWater:false, Sanitation:false, VectorDensity:true, FoodSecurity:false,
+        // Child Health
+        U5MR:true, Diarrhea:true, Malaria:true, Dengue:true, HeatIllness:true, Malnutrition:true, AMR:true,
+        // Demographics
+        ChildDensity:true, SchoolAttendance:false, DisplacedChildren:true, ChildPoverty:true,
+        // Health System
+        FacilityDensity:false, CHW:false, VaccineCoverage:false, MedicalSupply:false, EmergencyCapacity:false, HealthCommunication:false,
+        // Equity
+        InternetAccess:false, Languages:false, Gender:false, Marginalized:true
+      };
+
+      // default plausible min/max for normalization (can be refined)
+      const defaults = {
+        Temperature: [15,45], Rainfall:[200,6000], AirQuality:[5,150], ExtremeWeather:[0,20], Flooding:[0,120],
+        WaterQuality:[0,100], SafeWater:[0,100], Sanitation:[0,100], VectorDensity:[0,100], FoodSecurity:[0,100],
+        U5MR:[2,200], Diarrhea:[0,500], Malaria:[0,500], Dengue:[0,500], HeatIllness:[0,500], Malnutrition:[0,60], AMR:[0,50],
+        ChildDensity:[1,5000], SchoolAttendance:[0,100], DisplacedChildren:[0,10000], ChildPoverty:[0,100],
+        FacilityDensity:[0,50], CHW:[0,200], VaccineCoverage:[0,100], MedicalSupply:[0,100], EmergencyCapacity:[0,100], HealthCommunication:[0,100],
+        InternetAccess:[0,100], Languages:[0,100], Gender:[0,100], Marginalized:[0,100]
+      };
+
+      const form = document.getElementById('indicatorForm');
+      const computeBtn = document.getElementById('computeBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const status = document.getElementById('status');
+      const overallBox = document.getElementById('overallBox');
+      const recoBox = document.getElementById('recoBox');
+      const radarCtx = document.getElementById('radarChart').getContext('2d');
+      let radarChart = null;
+
+      // Leaflet map init
+      const map = L.map('map').setView([0,0], 2);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OSM'}).addTo(map);
+      let geoLayer = null;
+
+      function readFormValues(){
+        const data = {};
+        // grab all inputs by name
+        const inputs = form.querySelectorAll('input');
+        inputs.forEach(inp => {
+          const name = inp.name.trim();
+          if(!name) return;
+          const val = parseFloat(inp.value);
+          data[name] = isNaN(val) ? null : val;
+        });
+        return data;
+      }
+
+      function normalize(val, min, max, higherIsBad=true){
+        if(val === null) return null;
+        const clamped = Math.max(min, Math.min(max, val));
+        // map to 0-1
+        let norm = (clamped - min) / (max - min);
+        if(!higherIsBad) norm = 1 - norm; // if higher is good, reverse so that 1 always = worst
+        return norm; // 0..1 where 1 = worst
+      }
+
+      function computeDomainScores(values, weights=null){
+        // weights: optional per-variable weights object (same keys)
+        const domainScores = {};
+        for(const [dname, vars] of Object.entries(domains)){
+          const vals = [];
+          for(const v of vars){
+            const raw = values[v];
+            const range = defaults[v] || [0,100];
+            const dir = direction[v]===undefined ? true : direction[v];
+            const n = normalize(raw, range[0], range[1], dir);
+            if(n===null) continue;
+            const w = (weights && weights[v]) ? weights[v] : 1;
+            vals.push({n,w,v});
+          }
+          if(vals.length===0) { domainScores[dname] = null; continue; }
+          const num = vals.reduce((s,x)=> s + x.n * x.w, 0);
+          const den = vals.reduce((s,x)=> s + x.w,0);
+          domainScores[dname] = num/den; // 0..1 (1 worst)
+        }
+        return domainScores;
+      }
+
+      function overallFromDomain(domainScores, domainWeights=null){
+        const items = Object.entries(domainScores).filter(([,v])=> v !== null);
+        if(items.length===0) return null;
+        const weights = domainWeights || Object.fromEntries(Object.keys(domains).map(k=>[k,1]));
+        const num = items.reduce((s,[k,v])=> s + v * (weights[k]||1),0);
+        const den = items.reduce((s,[k])=> s + (weights[k]||1),0);
+        return num/den; // 0..1 (1 worst)
+      }
+
+      // simple PCA-based weights (first principal component loadings)
+      async function computePCAweights(values){
+        // Build matrix: observations = variables, but here single observation not enough.
+        // We approximate by normalizing each variable and using assumed variance: for single-observation PCA it's not meaningful.
+        // Instead, we will attempt to compute weights proportional to sensitivity (variance proxies) — simplified.
+        // For prototype: use equal weights and try to load numeric.js for real PCA if user has historical matrix (not available here).
+        // Return equal weights as fallback.
+        const varNames = Object.keys(direction);
+        const w = {};
+        varNames.forEach(v=> w[v]=1);
+        return w;
+      }
+
+      function zoneFromScore(score01){
+        if(score01 === null) return {zone:'No data', color:'#9ca3af'};
+        const s = score01*100;
+        if(s < 34) return {zone:'GREEN (Low)', color:'#10b981'};
+        if(s < 67) return {zone:'YELLOW (Medium)', color:'#f59e0b'};
+        return {zone:'RED (High)', color:'#ef4444'};
+      }
+
+      function humanPercent(x){ return (x*100).toFixed(1) + '%'; }
+
+      function showRadar(domainScores){
+        const labels = Object.keys(domainScores);
+        const data = labels.map(k=> domainScores[k]===null ? 0 : domainScores[k]*100);
+        if(radarChart) radarChart.destroy();
+        radarChart = new Chart(radarCtx, {
+          type:'radar',
+          data:{ labels, datasets:[{ label:'Domain vulnerability (0-100)', data, fill:true, tension:0.1 }]},
+          options:{ scales:{ r:{ suggestedMin:0, suggestedMax:100 } } }
+        });
+      }
+
+      function produceRecommendations(domainScores, values){
+        // simple rules: pick lowest-performing protective (e.g., SafeWater, Sanitation, FacilityDensity) and high-risk domains
+        const recs = [];
+        // If Environmental domain high (>=0.6) recommend WASH, safe water
+        if(domainScores.Environmental !== null && domainScores.Environmental >= 0.6){
+          recs.push('Environmental risks are high → focus on WASH (safe water, sanitation) and reduction of water contamination.');
+        }
+        if(domainScores.ChildHealth !== null && domainScores.ChildHealth >= 0.6){
+          recs.push('Child health outcomes are poor → prioritize nutrition interventions, disease surveillance & service access.' );
+        }
+        if(domainScores.HealthSystem !== null && domainScores.HealthSystem >= 0.6){
+          recs.push('Health system is vulnerable → strengthen facility coverage, availability of medical supplies & CHWs.');
+        }
+        // check indicators specifically
+        if(values.Sanitation !== null && values.Sanitation < 50){ recs.push('Sanitation <50% → sanitation programs should be prioritized (latrines, waste management).'); }
+        if(values.SafeWater !== null && values.SafeWater < 60){ recs.push('Safe drinking water access <60% → invest in clean water infrastructure.'); }
+        if(values.VaccineCoverage !== null && values.VaccineCoverage < 85){ recs.push('Vaccine coverage <85% → strengthen routine immunization.'); }
+        if(recs.length===0) recs.push('No automatic recommendations (relatively low score). Check manual recommendations or historical data.');
+        return recs;
+      }
+
+      // compute and render main results
+      async function computeAndRender(){
+        status.textContent = 'Computing...';
+        const values = readFormValues();
+        // check at least some values present
+        const any = Object.values(values).some(v=> v !== null);
+        if(!any){ overallBox.innerHTML = '<div class="danger">No input. Fill at least a few indicators.</div>'; status.textContent = ''; return; }
+
+        const method = document.getElementById('scoringMethod').value;
+        let varWeights = null;
+        if(method === 'pca'){
+          try{
+            status.textContent = 'Trying PCA... (prototype fallback)';
+            varWeights = await computePCAweights(values); // prototype fallback
+            status.textContent = 'PCA fallback used (prototype).';
+          }catch(e){ console.warn(e); status.textContent = 'PCA failed — using equal weights.'; }
+        }
+
+        const domainScores = computeDomainScores(values, varWeights);
+        const overall = overallFromDomain(domainScores);
+        const zone = zoneFromScore(overall);
+
+        // render overall box
+        overallBox.innerHTML = `<div class="flex items-center justify-between"><div>
+          <div class="text-sm">Overall vulnerability index</div>
+          <div class="text-3xl font-bold" style="color:${zone.color}">${overall===null? '--' : Math.round(overall*100)}</div>
+          <div class="text-sm text-gray-600">Zone: <strong style='color:${zone.color}'>${zone.zone}</strong></div>
+        </div></div>`;
+
+        showRadar(domainScores);
+
+        // map coloring (if geojson already loaded, color by overall)
+        if(geoLayer){
+          geoLayer.eachLayer(layer=>{
+            layer.setStyle({fillColor: zone.color, fillOpacity:0.5, color: zone.color});
+            if(layer.feature && layer.feature.properties){
+              layer.bindPopup(`<strong>${layer.feature.properties.name || 'Area'}</strong><br/>Score: ${overall===null? 'N/A' : Math.round(overall*100)}`);
+            }
+          });
+          map.fitBounds(geoLayer.getBounds());
+        }
+
+        // recommendations
+        const recs = produceRecommendations(domainScores, values);
+        recoBox.innerHTML = recs.map(r=>`<div>• ${r}</div>`).join('');
+
+        status.textContent = 'Done.';
+      }
+
+      computeBtn.addEventListener('click', computeAndRender);
+      resetBtn.addEventListener('click', ()=>{ form.reset(); overallBox.innerHTML='-- Press Compute --'; recoBox.innerHTML=''; if(radarChart) radarChart.destroy(); status.textContent=''; });
+
+      // geojson upload
+      document.getElementById('geojsonUpload').addEventListener('change', function(evt){
+        const f = evt.target.files[0];
+        if(!f) return;
+        const reader = new FileReader();
+        reader.onload = function(e){
+          try{
+            const gj = JSON.parse(e.target.result);
+            if(geoLayer) { geoLayer.remove(); geoLayer = null; }
+            geoLayer = L.geoJSON(gj, {onEachFeature:(f,l)=>{ l.bindPopup(f.properties && (f.properties.name || f.properties.NAME) ? (f.properties.name||f.properties.NAME) : 'Area'); }}).addTo(map);
+            map.fitBounds(geoLayer.getBounds());
+          }catch(err){ alert('Invalid GeoJSON'); }
+        };
+        reader.readAsText(f);
+      });
+
+      // investment calc
+      document.getElementById('calcInv').addEventListener('click', ()=>{
+        const interv = document.getElementById('intervSelect').value;
+        const cost = parseFloat(document.getElementById('intervCost').value);
+        const eff = parseFloat(document.getElementById('intervEfficacy').value);
+        if(isNaN(cost) || isNaN(eff)){ document.getElementById('invOutput').innerHTML = '<span class="danger">Enter cost & expected impact first.</span>'; return; }
+        // naive ROI: impact% improvement on overall score per billion Rp
+        // compute current overall
+        const values = readFormValues();
+        const domainScores = computeDomainScores(values,null);
+        const overall = overallFromDomain(domainScores);
+        const improvement = eff/100; // e.g. 10% reduction in vulnerability
+        const newOverall = Math.max(0, overall - overall * improvement);
+        const impactPoints = (overall - newOverall) * 100; // points (0-100 scale)
+        const costPerPoint = cost > 0 ? (cost / impactPoints) : Infinity;
+        document.getElementById('invOutput').innerHTML = `Intervention: <strong>${interv}</strong><br/>Estimated improvement: <strong>${(improvement*100).toFixed(1)}%</strong> of current overall vulnerability.<br/>Score before: <strong>${Math.round(overall*100)}</strong> → after: <strong>${Math.round(newOverall*100)}</strong>.<br/>Cost: <strong>${cost.toFixed(2)} billion Rp</strong>. Cost per index-point improvement: <strong>${isFinite(costPerPoint)? costPerPoint.toFixed(3) + ' billion Rp/point' : '—'}</strong>.`; 
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
